@@ -1,128 +1,224 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<title>Pizza Drill Demo</title>
-		<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
-		<meta content="width=device-width,initial-scale=1.0" name="viewport">
-		
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-		<link rel="stylesheet" href="pizza.css">
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>	</head>
-	<body>
-		<!---Nav Bar-->
-				<nav class="navbar navbar-inverse">
-					<div class="container-fluid">
-						<div class="navbar-header">
-							<a class="navbar-brand" href="#">Tech Pizza dot com</a>
-						</div>
-						<ul class="nav navbar-nav">
-							<li><a href="#">Home</a></li>
-							<li><a href="#">Menu</a></li>
-							<li class="active"><a href="#">Order</a></li>
-							<li><a href="#">Locations</a></li>
-							<li><a href="#">Contact</a></li>
-						</ul>
-					</div>
-				</nav>
-		<!--/Nav Bar-->
-				
-		<div id="menuBG">
-			<h1><center>Tech Pizza:</center></h1>
-			<h2><center>Order Online</center></h2>
-			
-			<!--Order Form-->
-			<form id="frmMenu">
-				<div class="container">
-					<div class="container-body">
-						<h3>Size:</h3>
-						<input class="size" type="radio" name="Size" value="Personal Pizza"> Personal Pizza ($6.00)<br>
-						<input class="size" type="radio" name="Size" value="Medium Pizza"> Medium Pizza ($10.00)<br>
-						<input class="size" type="radio" name="Size" value="Large Pizza" checked> Large Pizza ($14.00)<br>
-						<input class="size" type="radio" name="Size" value="Extra Large Pizza"> Extra Large Pizza($16.00)<br>
-					</div>
-				</div>
-				<div class="container">
-					<div class="container-body">
-						<h3>Meats ($1.00 after your first topping):</h3>
-						<input class="meats" type="checkbox" name="Meat" value="Pepperoni"> Pepperoni<br>
-						<input class="meats" type="checkbox" name="Meat" value="Sausage"> Sausage <br>
-						<input class="meats" type="checkbox" name="Meat" value="Canadian Bacon"> Canadian Bacon<br> 
-						<input class="meats" type="checkbox" name="Meat" value="Ground Beef"> Ground Beef<br>
-						<input class="meats" type="checkbox" name="Meat" value="Anchovy"> Anchovy<br>
-						<input class="meats" type="checkbox" name="Meat" value="Chicken"> Chicken<br>
-					</div>
-				</div>
-				<div class="container">
-					<div class="container-body">
-						<h3>Crust:</h3>
-						<input class="crust" type="radio" name="Crust" value="Plain Crust" checked> Plain Crust<br>
-						<input class="crust" type="radio" name="Crust" value="Garlic Butter Crust"> Garlic Butter Crust<br>
-						<input class="crust" type="radio" name="Crust" value="Cheese Stuffed Crust"> Cheese Stuffed Crust ($3.00)<br>
-						<input class="crust" type="radio" name="Crust" value="Spicy Crust"> Spicy Crust<br>
-						<input class="crust" type="radio" name="Crust" value="House Special Crust"> House Special Crust<br>
-					</div>
-				</div>
-				<div class="container">
-					<div class="container-body">
-						<h3>Cheese:</h3>
-						<input class="cheese" type="radio" name="Cheese" value="Regular"> Regular<br>
-						<input class="cheese" type="radio" name="Cheese" value="No Cheese"> No Cheese<br>
-						<input class="cheese" type="radio" name="Cheese" value="Extra Cheese"> Extra Cheese ($3.00)<br>
-					</div>
-				</div>
-				<div class="container">
-					<div class="container-body">
-						<h3>Sauce:</h3>
-						<input class="sauce" type="radio" name="Sauce" value="Marinara Sauce" checked> Marinara Sauce<br>
-						<input class="sauce" type="radio" name="Sauce" value="White Sauce"> White Sauce<br>
-						<input class="sauce" type="radio" name="Sauce" value="Barbeque Sauce"> Barbeque Sauce<br>
-						<input class="sauce" type="radio" name="Sauce" value="No Sauce"> No Sauce<br>
-					</div>
-				</div>
-				<div class="container">
-					<div class="container-body">
-						<h3>Veggies ($1.00 after your first topping):</h3>
-						<input class="veggies" type="checkbox" name="Veggie" value="Tomatoes"> Tomatoes<br>
-						<input class="veggies" type="checkbox" name="Veggie" value="Onions"> Onions<br>
-						<input class="veggies" type="checkbox" name="Veggie" value="Olives"> Olives<br>
-						<input class="veggies" type="checkbox" name="Veggie" value="Green Peppers"> Green Peppers<br>
-						<input class="veggies" type="checkbox" name="Veggie" value="Mushrooms"> Mushrooms<br>
-						<input class="veggies" type="checkbox" name="Veggie" value="Pineapples"> Pineapples<br>
-						<input class="veggies" type="checkbox" name="Veggie" value="Spinach"> Spinach<br>
-						<input class="veggies" type="checkbox" name="Veggie" value="Jalapeno"> Jalapeno<br>
-					</div>
-				</div>
-			</form>
-			<div class="controls">
-			<div class="container">
-				<input id="btnOrder" type="button" onclick="getReceipt()" 
-						value="Place Order">
-					<div id="cart">
-						<div class="row">
-						<h4>Order:</h4>
-							<div class="col-6 col-sm-4" id="showText1"></div>
-							<div class="col-6 col-sm-4" id="showText2"></div>
-							<!-- Force next columns to break to new line at md breakpoint and up -->
-							<div class="w-100 d-none d-md-block"></div>
-							<div class="col-6 col-sm-4" id="totalPrice1"></div>
-							<div class="col-6 col-sm-4" id="showText1"></div>
-							<div class="col-6 col-sm-4" id="totalPrice2"></div>
-						</div>
-					</div>
-			</div>
-			</div>
-				
-				
-			
-			</div>
-		<!--/Order Form-->
-		
-		
-		<script src="pizza example.js"></script>
-		
+	<!DOCTYPE html>
 
-		
-	</body>
+<html lang="en">
+
+<head>
+
+    <title>Pizza Drill</title>
+
+    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8">
+
+    <meta content="width=device-width,initial-scale=1.0" name="viewport">
+
+    <link rel="stylesheet" href="bootstrap.css">
+
+    <link rel="stylesheet" href="pizza.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="pizzajs.js"></script>
+
+</head>
+
+<body>
+
+    <!---Nav Bar-->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+
+                <a class="navbar-brand" href="#">JavaScript Pizza dot com</a>
+
+            </div>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Order<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Locations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Contact</a>
+                </li>
+            </ul>
+
+        </div>
+
+    </nav>
+
+    <!--/Nav Bar-->
+
+
+
+    <div id="menuBG">
+        <br />
+        <br />
+        <br />
+        <h1><center>JavaScript Pizza:</center></h1>
+        <h2><center>Order Online</center></h2>
+
+
+
+        <!--Order Form-->
+
+        <form id="frmMenu">
+            <div class="container">
+
+
+                <h3>Size:</h3>
+
+                <input class="size" type="radio" name="Size" value="Personal Pizza"> Personal Pizza ($6.00)<br>
+
+                <input class="size" type="radio" name="Size" value="Medium Pizza"> Medium Pizza ($10.00)<br>
+
+                <input class="size" type="radio" name="Size" value="Large Pizza" checked> Large Pizza ($14.00)<br>
+
+                <input class="size" type="radio" name="Size" value="Extra Large Pizza"> Extra Large Pizza($16.00)<br>
+
+
+
+            </div>
+
+            <div class="container">
+
+
+                <h3>Meats ($1.00 after your first topping):</h3>
+
+                <input class="meats" type="checkbox" name="Meat" value="Pepperoni"> Pepperoni<br>
+
+                <input class="meats" type="checkbox" name="Meat" value="Sausage"> Sausage <br>
+
+                <input class="meats" type="checkbox" name="Meat" value="Canadian Bacon"> Canadian Bacon<br>
+
+                <input class="meats" type="checkbox" name="Meat" value="Ground Beef"> Ground Beef<br>
+
+                <input class="meats" type="checkbox" name="Meat" value="Anchovy"> Anchovy<br>
+
+                <input class="meats" type="checkbox" name="Meat" value="Chicken"> Chicken<br>
+
+
+
+            </div>
+
+            <div class="container">
+
+
+                <h3>Crust:</h3>
+
+                <input class="crust" type="radio" name="Crust" value="Plain Crust" checked> Plain Crust<br>
+
+                <input class="crust" type="radio" name="Crust" value="Garlic Butter Crust"> Garlic Butter Crust<br>
+
+                <input class="crust" type="radio" name="Crust" value="Cheese Stuffed Crust"> Cheese Stuffed Crust ($3.00)<br>
+
+                <input class="crust" type="radio" name="Crust" value="Spicy Crust"> Spicy Crust<br>
+
+                <input class="crust" type="radio" name="Crust" value="House Special Crust"> House Special Crust<br>
+
+
+
+            </div>
+
+            <div class="container">
+
+                <h3>Cheese:</h3>
+
+                <input class="cheese" type="radio" name="Cheese" value="Regular"> Regular<br>
+
+                <input class="cheese" type="radio" name="Cheese" value="No Cheese"> No Cheese<br>
+
+                <input class="cheese" type="radio" name="Cheese" value="Extra Cheese"> Extra Cheese ($3.00)<br>
+
+
+
+            </div>
+
+            <div class="container">
+
+                <h3>Sauce:</h3>
+
+                <input class="sauce" type="radio" name="Sauce" value="Marinara Sauce" checked> Marinara Sauce<br>
+
+                <input class="sauce" type="radio" name="Sauce" value="White Sauce"> White Sauce<br>
+
+                <input class="sauce" type="radio" name="Sauce" value="Barbeque Sauce"> Barbeque Sauce<br>
+
+                <input class="sauce" type="radio" name="Sauce" value="No Sauce"> No Sauce<br>
+
+
+
+            </div>
+
+            <div class="container">
+
+                <h3>Veggies ($1.00 after your first topping):</h3>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Tomatoes"> Tomatoes<br>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Onions"> Onions<br>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Olives"> Olives<br>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Green Peppers"> Green Peppers<br>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Mushrooms"> Mushrooms<br>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Pineapples"> Pineapples<br>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Spinach"> Spinach<br>
+
+                <input class="veggies" type="checkbox" name="Veggie" value="Jalapeno"> Jalapeno<br>
+
+            </div>
+
+
+        </form>
+        <div class="controls">
+            <div class="container">
+                <center><input id="btnOrder" type="button" onclick="getReceipt()"
+                       value="Place Order" align="center"></center>
+
+                <div id="cart">
+
+                    <div class="row">
+
+                        <h4>Order:</h4>
+
+                        <div class="col-6 col-sm-4" id="showText1"></div>
+
+                        <div class="col-6 col-sm-4" id="showText2"></div>
+
+                        <!-- Force next columns to break to new line at md breakpoint and up -->
+
+                        <div class="w-100 d-none d-md-block"></div>
+
+                        <div class="col-6 col-sm-4" id="totalPrice1"></div>
+
+                        <div class="col-6 col-sm-4" id="showText1"></div>
+
+                        <div class="col-6 col-sm-4" id="totalPrice2"></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--/Order Form-->
+
+</body>
+
 </html>
