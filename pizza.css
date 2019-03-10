@@ -1,18 +1,23 @@
 body {
-		background-color: #fcd4a6;
+    background-color: #fcd4a6;
 }
+
 
 .container {
-	width: 450px;
-	height: 250px;
-	background-color: #faebd7;
-	border: 2px solid black;
-	border-radius: 5%;
+    width: 450px;
+    height: 290px;
+    background-color: #faebd7;
+    border: 2px solid black;
+    border-radius: 5%;
 }
 
+#btnOrder {
+    width: 100px;
+    height: 40px;
 
+}
 
-#btnOrder{margin:10px 0px 0px 100px;width:100px;height:40px}
-
-
-
+.menuBG {
+    padding-left: 250px;
+    padding-right: 250px;
+}
